@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vertical Cycle Menu - Demo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <style type="text/css">
+        body { background: #ececec; }
+        h2 { color: #333333; }
+        em { color: #999999; }  
+        
+        #AutoLoopUL,
+        #NoLoopUL1,
+        #NoLoopUL2 {
+            border-radius: 20px;
+            background: #ffffff;  
+            width: 250px;
+            height: 300px;  
+            margin-bottom: 50px;
+            padding: 30px;
+            position: relative;
+            float: left;
+            margin-right: 50px;            
+        }
+        
+        #AutoLoopUL ul,
+        #NoLoopUL1 ul,
+        #NoLoopUL2 ul {
+            margin: 20px;
+        }    
+        
+        #AutoLoopUL li,
+        #NoLoopUL1 li,
+        #NoLoopUL2 li {
+            /*margin-bottom: 10px;*/
+        }         
+        </style>
+        
+        <link rel="stylesheet" type="text/css" href="jquery-vcmenu.css" />
+        <script type="text/javascript" src="jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="jquery-vcmenu.js"></script>        
+        <script type="text/javascript">
+        $(function(){
+            
+            $('#AutoLoopUL').vcmenu({
+                auto_loop:          true,
+                auto_interval:      3000,
+                notice_open_style:    'slide',
+                notice_close_style:     'slide',
+                notice_toggle_style:    'slide'                
+            });
+            
+            $('#NoLoopUL1').vcmenu({
+                notice_toggle_style:    'fade'
+            });
+            
+            $('#NoLoopUL2').vcmenu({
+                button_method:          2,
+                notice_open_style:    'fade',
+                notice_close_style:     'fade',
+                notice_toggle_style:    'slide'
+            });            
+            
+        });
+        </script>        
+    </head>
+    <body>
+        
+        
+        <h1>Vertical Cycle Menu</h1>
+        
+        <p>
+            You can use the vcmenu.js with these options :
+        </p>
+        
+        <p>
+            <em>
+                title_selector | notice_height | notice_first_display | notice_first_delay | notice_open_style | button_method | auto_loop | auto_interval 
+            </em>
+        </p>
+        
+        <br/>
+        
+       <ul id="AutoLoopUL" class="vcmenu">
+            <li style="list-style: none; background-color: #eeeeee;"><h2>Auto Loop</h2></li>
+            <li><span>Item-1</span>
+                <ul>
+                    <li><a href="/user-link-module">Sub-item-1</a></li>
+                    <li>Sub-item-2</li>
+                </ul>
+            </li>        
+            <li><span>Item-2</span>
+                <ul>
+                    <li>Sub-item-1</li>
+                    <li>Sub-item-2</li>
+                </ul>            
+            </li>
+            <li><span>Item-3</span>
+                <ul>
+                    <li>Sub-item-1</li>
+                    <li>Sub-item-2</li>
+                </ul>            
+            </li>
+        </ul>          
+        
+        <ul id="NoLoopUL1" class="vcmenu">
+            <li style="list-style: none; background-color: #eeeeee;"><h2>No Auto Loop method#1</h2></li>
+            <li><span>Item-1</span>
+                <ul>
+                    <li><a href="/user-link-module">Sub-item-1</a></li>
+                    <li>Sub-item-2</li>
+                </ul>
+            </li>        
+            <li><span>Item-2</span>
+                <ul>
+                    <li>Sub-item-1</li>
+                    <li>Sub-item-2</li>
+                </ul>            
+            </li>
+            <li><span>Item-3</span>
+                <ul>
+                    <li>Sub-item-1</li>
+                    <li>Sub-item-2</li>
+                </ul>            
+            </li>
+        </ul>
+
+       <ul id="NoLoopUL2" class="vcmenu">
+            <li style="list-style: none; background-color: #eeeeee;"><h2>No Auto Loop method#2</h2></li>
+            <li><span>Item-1</span>
+                <ul>
+                    <li><a href="/user-link-module">Sub-item-1</a></li>
+                    <li>Sub-item-2</li>
+                </ul>
+            </li>        
+            <li><span>Item-2</span>
+                <ul>
+                    <li>Sub-item-1</li>
+                    <li>Sub-item-2</li>
+                </ul>            
+            </li>
+            <li><span>Item-3</span>
+                <ul>
+                    <li>Sub-item-1</li>
+                    <li>Sub-item-2</li>
+                </ul>            
+            </li>
+        </ul>      
+        
+       
+    </body>
+</html>
