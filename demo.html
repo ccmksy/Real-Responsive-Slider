@@ -8,10 +8,9 @@
         body,html { background: #ececec; height: 100%; }
         h2 { color: #333333; }
         em { color: #999999; }
-        #container {            
-            width: 80%;
-            height: 70%;
+        #container {     
             background: #cccccc;
+            
             
         }
         </style>
@@ -21,8 +20,13 @@
         <script type="text/javascript" src="jquery-rrslider.js"></script>        
         <script type="text/javascript">
         $(function(){
+            
+            $("#container").rrslider({
+                width:    '50%',
+                height:   '50%',
+                imgCover:   false
+            });
            
-           $("#container").rrslider();
             
         });
         </script>        
@@ -38,18 +42,19 @@
         
         <p>
             <em>
-                dd
+                width | height | imgCover
             </em>
         </p>
         
         <div id="container" class="rrslider">
             <ul>
-                <li style="background:purple;">6</li>
-                <li style="background:red;">5</li>
-                <li style="background:orange;">4</li>
-                <li style="background:yellow;">3</li>
-                <li style="background:pink;">2</li>
-                <li style="background:yellowgreen;">1</li>
+                <li><img src="picture/2IMG_5026.JPG" /></li>
+                <li style="">5</li>
+                <li style="">4</li>
+                <li style="">3</li>
+                <li><img src="picture/2IMG_5026.JPG" /></li>                
+                <li><img src="picture/2IMG_5039.JPG" /></li>                
+                
             </ul>
             <button class="previous">previous</button>
             <button class="next">next</button>

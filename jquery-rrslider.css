@@ -1,4 +1,9 @@
-/* RRSlider ul Style */
+/* RRSlider and ul Style */
+
+.rrslider {
+    width: 100%;
+    height: 100%;
+}
 
 .rrslider,
 .rrslider ul {
@@ -16,11 +21,28 @@
 
 .rrslider ul {
     list-style: none;
+    height: 100%;
 }
 
 .rrslider ul li {
+    background: #000000;
     position: absolute;
+    overflow: hidden;
+    text-align: center;  
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;     
 }
+
+.rrslider ul li img{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: auto;
+    height: auto;
+}
+
 
 
 /* RRSlider Button Style */
