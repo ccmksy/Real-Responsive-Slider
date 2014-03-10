@@ -3,19 +3,22 @@
  * 
  * Author : Mike Yeung - www.cloud-design.hk
  * License : Dual licensed under the MIT and GPL licenses
- * Version : 1.0
+ * Version : 2.0
  * Last revised: 2014-03-10
  * 
  * Example ( Must use "descending" order ) :
+ * 
  * <div id='xxx' class='rrslider'>
  *      <ul>
- *          <li>3</li>
- *          <li>2</li>
- *          <li>1</li>
+ *          <li>item 3</li>
+ *          <li>item 2</li>
+ *          <li>item 1</li>
  *      </ul>
  *      <button class='previous'>previous</button>
  *      <button class='next'>next</button>      
  * </div>
+ * 
+ * Above example, "item 1" will be shown firstly, not "item 3".
  * 
  */
 
@@ -41,28 +44,39 @@ $(function(){
         this.each(function() { 
             
             // Object variable
-            var obj = $(this);    
+            var obj     = $(this);    
             
             // Qty of li variable
-            var qty = $('ul li', obj).length;
+            var qty     = $('ul li', obj).length;
+            
+            // Get id variable
+            var obj_id  = "#" + obj.attr('id');
             
             // Css setting
             $(obj).css({
-                "height":   options.height,
-                "width":    options.width
+                'height':   options.height,
+                'width':    options.width
+            });
+            $('ul', obj).css({
+                'position': 'absolute'
             });
             
             //----------------------------------------------------------------------
             // Functions Setting
-            // ---------------------------------------------------------------------             
+            // ---------------------------------------------------------------------    
             
+            // Adjust Button Top Location function            
             function adjust_button_top()
             {
+                var obj_h   = $("ul", obj).height();
+                var btn_h   = $('button').height();
+                
                 $('button', obj).css({
-                    'top': ($("ul", obj).height() / 2) - ($('button').height() / 2)
+                    'top': ( obj_h / 2 ) - ( btn_h / 2 )
                 });                
             }      
             
+            // Adjust Image Responsive
             function adjust_img(selector)
             {
                 if(!options.imgCover === true)
@@ -81,9 +95,8 @@ $(function(){
                             'height':   "auto",
                             'width':    "100%"
                         });
-                    }                
-
-
+                    }         
+                    
                     $('img', selector).css({
                         'left': ($("ul", obj).width() / 2) - ($('img', selector).width() / 2),
                         'top': ($("ul", obj).height() / 2) - ($('img', selector).height() / 2)
@@ -94,6 +107,7 @@ $(function(){
                     var imgSrc=$('img', selector).attr('src');
                     
                     $('img', selector).css('display','none');
+                    
                     $(selector).css({
                         'background-image':     'url(' + imgSrc + ')',
                         'background-position':  'center center',
@@ -104,57 +118,93 @@ $(function(){
                         '-o-background-size':       'cover',
                         'filter':               "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "', sizingMethod='scale')",
                         '-ms-filter':           "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "', sizingMethod='scale')"
-                    });                    
+                    }); 
+                    
                 }
             }   
+            
+            
+            // Call Next Slide Function 
+            // Because descending order, so we must use prev(), not next().            
+            function call_next_slide(e)
+            {
+                e.preventDefault();
+                $(e.target).off('click');
+                
+                var cur_slide   = $("ul li", obj).eq(qty-1);
+                var cur_obj_w   = $("ul", obj).width();
+                var nex_slide   = $(cur_slide).prev('li');                      // Important !!    
+                
+                // Current Slide move to left
+                $(cur_slide).animate({ 'left': - cur_obj_w }, options.speed, function(){
+                    
+                    // Rearrange the order index
+                    $(this).prependTo( obj_id + " ul" ).css( 'left', '0px'); 
+                    
+                });                
+                
+                // Adjust next image
+                adjust_img(nex_slide);
+                
+                // Next Slide move from right to left
+                $(nex_slide).css({ 'left': cur_obj_w }).animate({ 'left': '0px' }, options.speed, function(){
+                    
+                    $(e.target).on('click', call_next_slide);
+                    
+                });                  
+                
+            }
+            
+            // Call Previous Slide Function 
+            // Because descending order, so we must use eq(0), not prev().                 
+            function call_previous_slide(e)
+            {
+                e.preventDefault();
+                $(e.target).off('click');
+                
+                var cur_slide   = $("ul li", obj).eq(qty-1);                
+                var cur_obj_w   = $("ul", obj).width();   
+                var pre_slide   = $("ul li", obj).eq(0);               
+                
+                // Current Slide move to right
+                $(cur_slide).animate({ 'left': cur_obj_w }, options.speed, function(){
+                    
+                    // Rearrange the order index
+                    $(this).prependTo( this ).css( 'left', '0px');             // Important !!
+                    
+                });   
+                
+                // Adjust next image
+                adjust_img(pre_slide);                
+                
+                // Pre Slide move to right                
+                $(pre_slide).appendTo( obj_id + " ul" ).css({ 'left': - cur_obj_w }).animate({ 'left': '0px' }, options.speed, function(){
+                    
+                    $(e.target).on('click', call_previous_slide);
+                    
+                });                 
+            }
 
             
             //----------------------------------------------------------------------
             // Execute and Flow Control
             // ---------------------------------------------------------------------      
             
-            // Initialize Button Location
+            // Initialize
             adjust_button_top();
             adjust_img($("ul li", obj).eq(qty-1));
             
-            // Resize Button Location
+            // Resizing
             $(window).resize(function(){                
                 adjust_button_top();  
                 adjust_img($("ul li", obj).eq(qty-1));
             });
             
-            // Previous Button Event
-            $(".previous", obj).on("click", function(){  
-                
-                // Set the Current li and move it to right
-                $("ul li", obj).eq(qty-1).animate({"left": $("ul", obj).width()}, options.speed, function(){
-                    $(this).prependTo(this, obj).css("left","0px");    
-                });
-                
-                // Adjust the previous img
-                adjust_img($("ul li", obj).eq(0));
-                
-                // Set the Previous li and move it frome left to right                
-                $("ul li", obj).eq(0).appendTo("ul", obj).css("left", - $("ul", obj).width()).animate({"left":"0px"}, options.speed);                 
-            
-            });
-            
-            // Next Button Event            
-            $(".next", obj).on("click", function(){    
-                
-                // Set the Current li and move it to left
-                $("ul li", obj).eq(qty-1).animate({"left": - $("ul", obj).width()}, options.speed, function(){
-                    $(this).prependTo("ul", obj).css("left","0px");  
-                });
-                
-                // Set the Next li and move it from right to left
-                $("ul li", obj).eq(qty-2).css("left", $("ul", obj).width()).animate({"left":"0px"}, options.speed);
-
-                // Because it has to get the newest size that can adjust img, so
-                // it must set here 
-                adjust_img($("ul li", obj).eq(qty-2));
-                
-            });
+            // Call Previous Slide
+            $(".previous", obj).on("click", call_previous_slide);            
+             
+            // Call Next Slide
+            $(".next", obj).on("click", call_next_slide );
             
         });
         
