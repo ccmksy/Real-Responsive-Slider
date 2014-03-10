@@ -1,0 +1,40 @@
+/* RRSlider ul Style */
+
+.rrslider,
+.rrslider ul {
+    position: relative;
+    overflow: hidden;
+}
+
+.rrslider ul,
+.rrslider ul li {    
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.rrslider ul {
+    list-style: none;
+}
+
+.rrslider ul li {
+    position: absolute;
+}
+
+
+/* RRSlider Button Style */
+
+.rrslider button {
+    position: absolute;
+    border: none;
+    cursor: pointer;
+}
+
+.rrslider button.next {
+    right: 0px;
+}
+
+.rrslider button.previous {
+    left: 0px;
+}

@@ -5,61 +5,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <style type="text/css">
-        body { background: #ececec; }
+        body,html { background: #ececec; height: 100%; }
         h2 { color: #333333; }
-        em { color: #999999; }  
-        
-        #AutoLoopUL,
-        #NoLoopUL1,
-        #NoLoopUL2 {
-            border-radius: 20px;
-            background: #ffffff;  
-            width: 250px;
-            height: 300px;  
-            margin-bottom: 50px;
-            padding: 30px;
-            position: relative;
-            float: left;
-            margin-right: 50px;            
+        em { color: #999999; }
+        #container {            
+            width: 80%;
+            height: 70%;
+            background: #cccccc;
+            
         }
-        
-        #AutoLoopUL ul,
-        #NoLoopUL1 ul,
-        #NoLoopUL2 ul {
-            margin: 20px;
-        }    
-        
-        #AutoLoopUL li,
-        #NoLoopUL1 li,
-        #NoLoopUL2 li {
-            /*margin-bottom: 10px;*/
-        }         
         </style>
         
-        <link rel="stylesheet" type="text/css" href="jquery-vcmenu.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-rrslider.css" />
         <script type="text/javascript" src="jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="jquery-vcmenu.js"></script>        
+        <script type="text/javascript" src="jquery-rrslider.js"></script>        
         <script type="text/javascript">
         $(function(){
-            
-            $('#AutoLoopUL').vcmenu({
-                auto_loop:          true,
-                auto_interval:      3000,
-                notice_open_style:    'slide',
-                notice_close_style:     'slide',
-                notice_toggle_style:    'slide'                
-            });
-            
-            $('#NoLoopUL1').vcmenu({
-                notice_toggle_style:    'fade'
-            });
-            
-            $('#NoLoopUL2').vcmenu({
-                button_method:          2,
-                notice_open_style:    'fade',
-                notice_close_style:     'fade',
-                notice_toggle_style:    'slide'
-            });            
+           
+           $("#container").rrslider();
             
         });
         </script>        
@@ -67,86 +30,30 @@
     <body>
         
         
-        <h1>Vertical Cycle Menu</h1>
+        <h1>Real Responsive Slider</h1>
         
         <p>
-            You can use the vcmenu.js with these options :
+            You can use the rrslider.js with these options :
         </p>
         
         <p>
             <em>
-                title_selector | notice_height | notice_first_display | notice_first_delay | notice_open_style | button_method | auto_loop | auto_interval 
+                dd
             </em>
         </p>
         
-        <br/>
-        
-       <ul id="AutoLoopUL" class="vcmenu">
-            <li style="list-style: none; background-color: #eeeeee;"><h2>Auto Loop</h2></li>
-            <li><span>Item-1</span>
-                <ul>
-                    <li><a href="/user-link-module">Sub-item-1</a></li>
-                    <li>Sub-item-2</li>
-                </ul>
-            </li>        
-            <li><span>Item-2</span>
-                <ul>
-                    <li>Sub-item-1</li>
-                    <li>Sub-item-2</li>
-                </ul>            
-            </li>
-            <li><span>Item-3</span>
-                <ul>
-                    <li>Sub-item-1</li>
-                    <li>Sub-item-2</li>
-                </ul>            
-            </li>
-        </ul>          
-        
-        <ul id="NoLoopUL1" class="vcmenu">
-            <li style="list-style: none; background-color: #eeeeee;"><h2>No Auto Loop method#1</h2></li>
-            <li><span>Item-1</span>
-                <ul>
-                    <li><a href="/user-link-module">Sub-item-1</a></li>
-                    <li>Sub-item-2</li>
-                </ul>
-            </li>        
-            <li><span>Item-2</span>
-                <ul>
-                    <li>Sub-item-1</li>
-                    <li>Sub-item-2</li>
-                </ul>            
-            </li>
-            <li><span>Item-3</span>
-                <ul>
-                    <li>Sub-item-1</li>
-                    <li>Sub-item-2</li>
-                </ul>            
-            </li>
-        </ul>
-
-       <ul id="NoLoopUL2" class="vcmenu">
-            <li style="list-style: none; background-color: #eeeeee;"><h2>No Auto Loop method#2</h2></li>
-            <li><span>Item-1</span>
-                <ul>
-                    <li><a href="/user-link-module">Sub-item-1</a></li>
-                    <li>Sub-item-2</li>
-                </ul>
-            </li>        
-            <li><span>Item-2</span>
-                <ul>
-                    <li>Sub-item-1</li>
-                    <li>Sub-item-2</li>
-                </ul>            
-            </li>
-            <li><span>Item-3</span>
-                <ul>
-                    <li>Sub-item-1</li>
-                    <li>Sub-item-2</li>
-                </ul>            
-            </li>
-        </ul>      
-        
+        <div id="container" class="rrslider">
+            <ul>
+                <li style="background:purple;">6</li>
+                <li style="background:red;">5</li>
+                <li style="background:orange;">4</li>
+                <li style="background:yellow;">3</li>
+                <li style="background:pink;">2</li>
+                <li style="background:yellowgreen;">1</li>
+            </ul>
+            <button class="previous">previous</button>
+            <button class="next">next</button>
+        </div>       
        
     </body>
 </html>
