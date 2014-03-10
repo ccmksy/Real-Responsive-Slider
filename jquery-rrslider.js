@@ -3,7 +3,7 @@
  * 
  * Author : Mike Yeung - www.cloud-design.hk
  * License : Dual licensed under the MIT and GPL licenses
- * Version : 2.0
+ * Version : 2.0 
  * Last revised: 2014-03-10
  * 
  * Example ( Must use "descending" order ) :
