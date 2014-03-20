@@ -1,0 +1,70 @@
+/* RRSlider Table Style */
+
+.rrslider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.rrslider .tr {
+    width: 100%;
+    height: 100%;
+    display: table-row;
+}
+
+.rrslider .td { 
+    overflow: hidden;
+    background: #eeeeee;
+    display: table-cell;
+}
+
+.rrslider .tr:last-child,
+.rrslider .td:last-child {
+    height: 0px;
+}
+
+
+/* Must use relative, Don't use absolute */
+.rrslider ul {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.rrslider .slide {    
+    position: absolute;                 
+    float: left;
+    width: 100%;
+    height: 100%;   
+    background: yellow
+}
+
+
+
+
+
+
+
+
+
+
+/* RRSlider Button Style */
+
+.rrslider button {
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+
+.rrslider button.next {
+    right: 0px;
+}
+
+.rrslider button.previous {
+    left: 0px;
+}

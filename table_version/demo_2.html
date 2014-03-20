@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Real Responsive Slider (Table Version) - Demo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <style type="text/css">
+        body,html { background: #ececec; height: 100%;}
+        h1 { color: #333333; text-align: center; }
+        p { text-align: center; }
+        em { color: #999999;}
+        
+        .table {
+            display: table;
+            position: relative;
+        }
+        
+        .tr {
+            display: table-row;
+            height: 100%;   
+        }
+        
+        .td {
+            display: table-cell;
+            position: relative;
+            vertical-align: top;
+        }
+        
+        #container {     
+            margin: 0px auto;
+            background: #cccccc;
+            width: 50%;
+            height: 50%;
+        }
+        
+        </style>
+        
+        <link rel="stylesheet" type="text/css" href="jquery-rrslider.css" />
+        <script type="text/javascript" src="jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="jquery-rrslider.js"></script>        
+        <script type="text/javascript">
+        $(function(){
+            
+            $("#home_slider").rrslider({
+                //width:    '50%',
+                //height:   '50%',
+                //imgCover:   true
+            });
+           
+        });
+        </script>        
+    </head>
+    <body>
+        
+        
+        <h1>Real Responsive Slider</h1>
+        
+        <p>
+            You can use the rrslider.js with these options :
+        </p>
+        
+        <p>
+            <em>
+                width | height | imgCover
+            </em>
+        </p>
+        
+        <!-- Demo -->
+        
+        <div id="container" class="table">                
+            <div class="tr">
+                <div class="td" style="width: 30%;">
+                    left for test bugs
+                </div>      
+                <div class="td" style="width: auto; background: gray;">
+
+                    <!-- Example -->
+                    <div id="home_slider" class="rrslider">
+                        <div class="tr">
+                            <div class="td">
+                                <div class="slide" style='background:pink'>
+                                    <!--<img src="picture/2IMG_5026.JPG" />-->
+                                    123
+                                </div>
+                                <div class="slide" style='background:yellowgreen'>
+                                    <!--<img src="picture/2IMG_5039.JPG" />-->
+                                    456
+                                </div>                        
+                                <div class="slide" style='background:brown'>
+                                    <!--<img src="picture/2IMG_5047.JPG" />-->
+                                    789
+                                </div>   
+                            </div>                            
+                        </div>
+                        <!--
+                        <div class="tr">
+                            <div class="td">
+                                <button class="previous">previous</button>
+                                <button class="next">next</button>
+                            </div>
+                        </div>
+                        -->
+                    </div> 
+                    <!-- End -->
+                    
+                </div>
+            </div>  
+        </div>
+        
+        <!-- End -->
+        
+    </body>
+</html>
